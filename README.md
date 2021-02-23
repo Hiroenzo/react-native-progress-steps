@@ -170,6 +170,10 @@ render() {
 | previousBtnStyle | Style object to provide to the previous button | { textAlign: 'center', padding: 8 } | Object |
 | previousBtnTextStyle | Style object to provide to the previous button text | { color: '#007aff', fontSize: 18 } | Object |
 | previousBtnDisabled | Value to disable/enable previous button | false | Boolean |
+| disabledBtnTextStyle | Style object to provide to the disabled button text | { color: '#cdcdcd' } | Object |
+| progressButtonStyle | Style object to provide to the progress button | { flexDirection: 'row', marginTop: 90 } | Object |
+| prevButtonPosition | Style object to provide to the previous progress button | { position: 'absolute', left: 60, bottom: 40 } | Object |
+| nextButtonPosition | Style object to provide to the next progress button | { position: 'absolute', right: 60, bottom: 40 } | Object |
 | scrollViewProps | Object to provide props to ScrollView component | {} | Object |
 | scrollable | The content of the Progress Step should be scrollable | true | Boolean |
 | viewProps | Object to provide props to view component if scrollable is false | {} | Object |

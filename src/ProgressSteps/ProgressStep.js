@@ -40,11 +40,11 @@ class ProgressStep extends Component {
     };
 
     const disabledBtnText = {
-      color: '#cdcdcd'
+      color: '#cdcdcd',
+      ...this.props.disabledBtnTextStyle
     };
 
-    let textStyle = [btnTextStyle];
-    if (this.props.nextBtnDisabled) textStyle.push(disabledBtnText);
+    let textStyle = [btnTextStyle, this.props.nextBtnDisabled ? disabledBtnText : null];
 
     return (
       <TouchableOpacity
@@ -73,11 +73,11 @@ class ProgressStep extends Component {
     };
 
     const disabledBtnText = {
-      color: '#cdcdcd'
+      color: '#cdcdcd',
+      ...this.props.disabledBtnTextStyle
     };
 
-    let textStyle = [btnTextStyle];
-    if (this.props.previousBtnDisabled) textStyle.push(disabledBtnText);
+    let textStyle = [btnTextStyle, this.props.previousBtnDisabled ? disabledBtnText : null];
 
     return (
       <TouchableOpacity style={btnStyle} onPress={this.onPreviousStep} disabled={this.props.previousBtnDisabled}>
@@ -91,9 +91,12 @@ class ProgressStep extends Component {
     const viewProps = this.props.viewProps || {};
     const isScrollable = this.props.scrollable;
     const buttonRow = this.props.removeBtnRow ? null : (
-      <ProgressButtons 
-        renderNextButton={this.renderNextButton} 
-        renderPreviousButton={this.renderPreviousButton} 
+      <ProgressButtons
+        style={this.props.progressButtonStyle}
+        prevButtonPosition={this.props.prevButtonPosition}
+        nextButtonPosition={this.props.nextButtonPosition}
+        renderNextButton={this.renderNextButton}
+        renderPreviousButton={this.renderPreviousButton}
       />
     );
 
@@ -102,7 +105,6 @@ class ProgressStep extends Component {
         {isScrollable
           ? <ScrollView {...scrollViewProps}>{this.props.children}</ScrollView>
           : <View {...viewProps}>{this.props.children}</View>}
-
         {buttonRow}
       </View>
     );
@@ -125,6 +127,10 @@ ProgressStep.propTypes = {
   previousBtnStyle: PropTypes.object,
   previousBtnTextStyle: PropTypes.object,
   previousBtnDisabled: PropTypes.bool,
+  disabledBtnTextStyle: PropTypes.object,
+  progressButtonStyle: PropTypes.object,
+  prevButtonPosition: PropTypes.object,
+  nextButtonPosition: PropTypes.object,
   scrollViewProps: PropTypes.object,
   viewProps: PropTypes.object,
   errors: PropTypes.bool,
